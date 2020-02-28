@@ -15,6 +15,7 @@ const database = require('./database.js');
 function homePageHandler(req, res) {
   // Get page one of the API from star wars
   // THEN, render an EJS Template with that data
+  // console.log('something');
   fetchCharactersFromSWAPI(1)
     .then(data => res.render('index', data))
     .catch(error => { throw error; });
@@ -32,6 +33,7 @@ function fetchCharactersFromSWAPI(pageNumber) {
       // After we get the data from the remote API, go to the
       // Database and add the number of "likes" for each character
       // from our database, if there are any
+      // console.log(response.body, '✈️');
       return getNumberOfLikes(response.body)
     })
     .catch(error => { throw error; });
@@ -58,9 +60,9 @@ function getNumberOfLikes(data) {
           }
         }
       }
-
+  console.log(data, '🤓');
       return data;
     })
 }
 
-module.exports = { homePageHandler };
+module.exports = { homePageHandler, fetchCharactersFromSWAPI };

@@ -6,6 +6,7 @@
 const express = require('express');
 // Create an application using express
 const app = express();
+const methodOverride = require('method-override');
 
 // CORS (Cross Origin Resource Sharing) to allow (or deny) access to any web server or client
 const cors = require('cors');
@@ -31,6 +32,8 @@ const routes = require('./routes.js');
 
 // Anything static (css or browser-side javascript) should go here
 app.use(express.static('./www'));
+app.use(methodOverride('_method'));
+
 
 // On the server, we'll use EJS to do templates
 app.set('view engine', 'ejs');
@@ -40,6 +43,34 @@ app.set('views', './server/views');
 // Route Handler Definitions. Each express method and route should call
 // a method that the routes.js file exported
 app.get('/', routes.homePageHandler);
+app.put('/upvote/:vote_id', updateOneVote);
+app.get('/characters', getNewCharacters);
+
+function updateOneVote(request, response){
+  console.log(request.params, '🤗');
+   let remote_id = request.params.vote_id;
+   console.log(remote_id, "🖍");
+    let sql = 'UPDATE click_counts SET clicks=clicks+1 WHERE remote_id = $1 RETURNING clicks;';
+    let safeValues = [remote_id];
+
+    database.query(sql, safeValues)
+        .then(results =>{
+          // console.log(results, '🔊');
+            response.redirect('/')
+            // console.log(results.rows[0]);
+        })
+    // console.log(request.params.book_id);
+}
+
+function getNewCharacters(request, response){
+  console.log(request.params, '🧲');
+  console.log(request.query, '🛏');
+    routes.fetchCharactersFromSWAPI(request.query.page)
+    .then(data => response.json(data))
+    .catch(error => { throw error; });
+}
+
+
 
 // Wire in the defaults we required above.
 app.use('*', defaults.notFoundHandler);
