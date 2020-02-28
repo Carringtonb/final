@@ -3,12 +3,6 @@
 let likeButtons = $('button');
 // document.getElementsByTagName('button');
 
-let source = $('entry-template').innerHTML;
-// document.getElementById("entry-template").innerHTML;
-let template = Handlebars.compile(source);
-let context = { title: "My New Post", body: "This is my first post!" };
-let html = template(context);
-
 console.log('🎀');
 let moreChars = $('#morechars').on('click', getNewCharacters);
 
@@ -19,6 +13,17 @@ function getNewCharacters(){
   $.ajax(`/characters?page=${newPage}`, {method:'GET', dataType: 'JSON'})
     .then(characters => {
       console.log(characters, '🎁');
+        characters.results.forEach(legend => {
+         let thisChar = legend.name;
+         let charLikes = legend.likes;
+         console.log(thisChar, '💉');
+         console.log(charLikes, '💊');
+let source = document.getElementById("entry-template").innerHTML;
+let template = Handlebars.compile(source);
+let context = { title: $(thisChar), body: $(charLikes) };
+let html = template(context);
+console.log('heyyy');
+        })
       ////////////taKe characters, loop over it, append data to html with handlebars////////
     })
   console.log('hello!');

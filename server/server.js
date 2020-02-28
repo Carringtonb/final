@@ -52,7 +52,7 @@ function updateOneVote(request, response){
    console.log(remote_id, "🖍");
     let sql = 'UPDATE click_counts SET clicks=clicks+1 WHERE remote_id = $1 RETURNING clicks;';
     let safeValues = [remote_id];
-
+///// I dont understand why this query update is not working, according to everything I can find online it should 😔////
     database.query(sql, safeValues)
         .then(results =>{
           // console.log(results, '🔊');
@@ -63,8 +63,8 @@ function updateOneVote(request, response){
 }
 
 function getNewCharacters(request, response){
-  console.log(request.params, '🧲');
-  console.log(request.query, '🛏');
+  // console.log(request.params, '🧲');
+  // console.log(request.query, '🛏');
     routes.fetchCharactersFromSWAPI(request.query.page)
     .then(data => response.json(data))
     .catch(error => { throw error; });

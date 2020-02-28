@@ -1,0 +1,77 @@
+
+.characters {
+    /* width: auto; */
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    /* grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px; 
+  grid-column-gap: 10px;
+  grid-row-gap: 15px; */
+}
+
+.character {
+    background: #fff;
+    box-shadow: 0 10px 6px -6px #777;
+    margin: 1em;
+    width: 250px;
+    justify-content: center;
+    /* grid-template-columns: auto; */
+}
+
+.character header {
+    background: #ddd;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.character span {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 2.5em;
+    text-align: center;
+}
+
+.character button {
+    display: block;
+    margin: .5em auto;
+    width: 50%;
+}
+
+.header{
+    color: white;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    background-color:#401d12;
+    height: 2em;
+}
+
+.charBox{
+    background-color: #d9ae7a;
+    color: black;
+    /* grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%; */
+}
+
+/* .handlebars{
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    color: black;
+} */
+
+#voteButton{
+    color: white;
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    background-color:#401d12;
+    height: 3em;
+    border-radius: 1em;
+}
+
+#moreChars:hover {
+    background-color: #e8854a;
+    color: white;
+}

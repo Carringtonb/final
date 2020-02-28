@@ -1,0 +1,37 @@
+body > header {
+    /* background: #111; */
+    box-shadow: 0px 15px 10px -15px #111;
+    color: #eee;
+    line-height: 3em;
+    text-align: center;
+}
+
+footer {
+    background-color:#401d12;
+    box-shadow: 0px 13px 12px 10px #111;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2{
+    color: black;
+}
+
+main {
+    overflow: auto;
+    margin: 2em 0;
+    padding: 0 2em;
+}
+section{
+    grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px; 
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+    justify-content: center;
+}
