@@ -3,38 +3,50 @@
 <head>
   <title>Star Wars People</title>
   <link rel="stylesheet" href="/css/reset.css" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/modules.css" />
   <script id="entry-template" type="text/x-handlebars-template">
-    <section data-name="name" data-height="height" data-likes="likes">
+    <section legend.names="{{title}}" legend.likes="{{body}}">
+
       <div class="entry">
-        <h2>{{title}}</h2>
+        <h2>{{thisChar}}</h2>
         <div class="body">
-          {{body}}
+          {{charLikes}}
         </div>
       </div>
-    </section>
-  </script>
+    </script>
+  </section>
 </head>
 
 <body>
-  <header>
-    <h1>Star Wars Characters</h1>
-    <p>Vote for your favorites to show what you like!</p>
+  <header class="header">
+    <h1 class="header">Star Wars Characters</h1>
+    <p class="header">Vote for your favorites to show what you like!</p>
   </header>
   <main>
+    <section class="entry">
+        <!-- <h2>{{title}}</h2> -->
+        <h2 class ="handlebars" value="title"></h2> 
+        <div class="handlebars" value="body"></div> 
+        <!-- <div class="body">
+          {{body}}
+        </div> -->
+    </section>
+
     <section class="characters">
 
       <% for(let x = 0; x < results.length; x++) { %>
       <div class="character">
-        <header>
+        <header class="charBox">
 
           <h2><%= results[x].name %></h2>
         </header>
-        <form action="/upvote/<%=results[x].name %> ?_method=PUT" method="POST">
-         <input type="text" name="checker" value="<%= results[x].likes %>"> 
+        <form class="charBox" action="/upvote/<%=results[x].name %> ?_method=PUT" method="POST">
+         <!-- <input type="text" name="checker" value="<%= results[x].likes %>">  -->
          <div onclick="log(results[x])"></div>
-          <span><%= results[x].likes || 0 %></span>
-          <button>Upvote</button>
+          <span class="charBox"><%= results[x].likes || 0 %></span>
+          <button id="voteButton">Upvote</button>
       </form>
       </div>
       <% } %>
